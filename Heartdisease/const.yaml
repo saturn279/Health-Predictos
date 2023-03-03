@@ -1,0 +1,24 @@
+name: Heart_test
+hyperparameters:
+  global_batch_size: 8
+  data_location: Users/Swapnil/covid/Dataset
+  arch: cnn
+  workers: 4
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 1e-4
+  evaluate: store_true
+  pretrained: True
+  dataset: BTDTrial
+records_per_epoch: 50000
+searcher:
+  name: single
+  metric: val_loss
+  smaller_is_better: true
+  max_length:
+    epochs: 60
+entrypoint: model_def:BTDTrial
+# set to imagenet path
+bind_mounts:
+  - host_path: Users/Swapnil/covid/Dataset
+    container_path: Users/Swapnil/covid/Dataset
